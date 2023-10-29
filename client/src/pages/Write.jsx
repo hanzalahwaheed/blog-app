@@ -26,7 +26,7 @@ const Write = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const imgUrl = upload();
+    const imgUrl = await upload();
 
     try {
       state
@@ -37,12 +37,12 @@ const Write = () => {
           img: file ? imgUrl : '',
         })
         :
-        await axios.put(`/posts/}`, {
+        await axios.post(`/posts/}`, {
           title,
           desc: value,
           cat,
           img: file ? imgUrl : '',
-          date: moment(Date.now().format('YYYY-MM-DD HH:mm:ss'))
+          date: moment().format('YYYY-MM-DD HH:mm:ss')
         })
     } catch (error) {
       console.log(error)
